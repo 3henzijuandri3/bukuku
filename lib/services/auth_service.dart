@@ -71,7 +71,7 @@ class AuthService {
 
     } catch (e) {
       if (e is DioException) {
-        return LogoutResponseModel.fromJson(jsonDecode(e.response.toString()));;
+        return LogoutResponseModel.fromJson(jsonDecode(e.response.toString()));
       }
 
       rethrow;

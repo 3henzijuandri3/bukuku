@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                               'Please Fill All Of Register Form Field',
                             );
 
-                            DInfo.closeDialog(context, durationBeforeClose: Duration(milliseconds: 1200));
+                            DInfo.closeDialog(context, durationBeforeClose: const Duration(milliseconds: 1200));
                           }
                         }
                     ),

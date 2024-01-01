@@ -30,7 +30,7 @@ class _BookDetailPageState extends State<BookDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Book's Detail"),
+        title: const Text("Book's Detail"),
       ),
 
       body: GetX(

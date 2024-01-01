@@ -1,4 +1,3 @@
-import 'package:bukuku/models/auth/user.dart';
 import 'package:get/get.dart';
 
 import '../models/auth/login_model.dart';

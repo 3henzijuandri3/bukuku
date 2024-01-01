@@ -41,7 +41,7 @@ class _AllBookPageState extends State<AllBookPage> {
               if(listBookResponse.total != 0){
                 List<BookModel?> listBook = listBookResponse.data!.toList();
                 return GridView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                     itemCount: listBook.length,
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                       maxCrossAxisExtent: (MediaQuery.of(context).size.width) / 2, // Adjust the padding and spacing
@@ -64,7 +64,7 @@ class _AllBookPageState extends State<AllBookPage> {
                 );
 
               } else {
-                return Center(child: Text('No Book Data'),);
+                return const Center(child: Text('No Book Data'),);
               }
             }
 
