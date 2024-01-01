@@ -7,7 +7,12 @@ class AuthInputCustom extends StatelessWidget {
   final bool obscureText;
   final TextEditingController? controller;
 
-  const AuthInputCustom({super.key, required this.formLabel, required this.obscureText, this.controller});
+  const AuthInputCustom({
+    super.key,
+    required this.formLabel,
+    required this.obscureText,
+    this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +51,16 @@ class AddBookFormCustom extends StatelessWidget {
   final String formLabel;
   final TextEditingController? controller;
   final TextInputType? type;
+  final int? maxLine;
+  final String? hintText;
 
   const AddBookFormCustom({
     Key? key,
     required this.formLabel,
-    this.controller, this.type,
+    this.controller,
+    this.type,
+    this.maxLine,
+    this.hintText
   }) : super(key: key);
 
   @override
@@ -74,9 +84,12 @@ class AddBookFormCustom extends StatelessWidget {
         TextFormField(
           keyboardType: type,
           controller: controller,
+          maxLines: maxLine ?? 1,
 
           decoration: InputDecoration(
-              contentPadding: const EdgeInsets.all(8),
+              hintText: hintText ?? '',
+              contentPadding: const EdgeInsets.all(10),
+
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14)
               )

@@ -38,7 +38,7 @@ class BookService{
       DioService.setAuthToken(authToken);
 
       final res = await _dio.post(
-        '/books',
+        '/books/add',
         data: bookData.toJson()
       );
 
@@ -47,7 +47,53 @@ class BookService{
 
     } catch (e) {
       if (e is DioException) {
+        return AddBookResponse.fromJson(jsonDecode(e.response.toString()));
+      }
+
+      rethrow;
+    }
+
+  }
+
+  Future<BookModel> getBookDetail(String bookId) async {
+    try{
+      String authToken = await AuthService().getToken();
+
+      DioService.setAuthToken(authToken);
+
+      final res = await _dio.get(
+        '/books/$bookId',
+      );
+
+      BookModel bookDetailResponse = BookModel.fromJson(jsonDecode(res.toString()));
+      return bookDetailResponse;
+
+    } catch (e) {
+      if (e is DioException) {
         rethrow;
+      }
+
+      rethrow;
+    }
+  }
+
+  Future<AddBookResponse> editBook(BookModel bookData, String bookId) async {
+    try{
+      String authToken = await AuthService().getToken();
+
+      DioService.setAuthToken(authToken);
+
+      final res = await _dio.put(
+          '/books/$bookId/edit',
+          data: bookData.toJson()
+      );
+
+      AddBookResponse addBookResponse = AddBookResponse.fromJson(jsonDecode(res.toString()));
+      return addBookResponse;
+
+    } catch (e) {
+      if (e is DioException) {
+        return AddBookResponse.fromJson(jsonDecode(e.response.toString()));
       }
 
       rethrow;

@@ -80,15 +80,64 @@ class SmallButtonCustom extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: paddingX, vertical: paddingY),
       decoration: BoxDecoration(
         color: purpleColor.withOpacity(0.95),
-        borderRadius: BorderRadius.circular(14),
+        borderRadius: BorderRadius.circular(10),
       ),
 
       child: Text(
         label,
-        style: blackTextStyle.copyWith(
+        style: whiteTextStyle.copyWith(
             fontSize: customFontSize ?? 14,
             fontWeight: semiBold
         ),
+      ),
+    );
+  }
+}
+
+class MenuButtonCutom extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Function onTap;
+
+
+  const MenuButtonCutom({super.key, required this.icon, required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Icon
+          Container(
+            width: 150,
+            height: 150,
+
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: whiteColor,
+            ),
+
+            child: Center(
+              child: Icon(
+                icon,
+                size: 50,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          // Text
+          Text(
+            label,
+            style: blackTextStyle.copyWith(
+                fontSize: 14,
+                fontWeight: medium
+            ),
+          )
+        ],
       ),
     );
   }

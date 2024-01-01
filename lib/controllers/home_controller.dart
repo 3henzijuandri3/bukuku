@@ -1,3 +1,4 @@
+import 'package:bukuku/models/auth/login_model.dart';
 import 'package:bukuku/models/auth/user.dart';
 import 'package:bukuku/models/book/book_model.dart';
 import 'package:bukuku/services/book_service.dart';
@@ -13,6 +14,31 @@ class HomeController extends GetxController{
 
   final _listBookResponse = Rxn<ListBookModel?>();
   ListBookModel? get listBookResponse => _listBookResponse.value;
+
+  final _logoutResponse = Rxn<LogoutResponseModel?>();
+  LogoutResponseModel? get logoutResponse => _logoutResponse.value;
+
+  Future<bool> logout() async {
+    isLoading(true);
+
+    try{
+      var logout = await AuthService().logout();
+      _logoutResponse.value = logout;
+
+      if(logout.message != null){
+        return true;
+      }
+
+      return false;
+
+    } catch(e) {
+      isLoading(false);
+      rethrow;
+
+    } finally {
+      isLoading(false);
+    }
+  }
 
   Future<void> fetchHomeData() async {
     isLoading(true);
@@ -31,6 +57,10 @@ class HomeController extends GetxController{
     } finally {
       isLoading(false);
     }
+  }
+
+  clearState(){
+    Get.delete<HomeController>(force: true);
   }
 
 }

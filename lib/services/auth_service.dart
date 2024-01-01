@@ -55,6 +55,29 @@ class AuthService {
     }
   }
 
+  Future<LogoutResponseModel> logout() async {
+    try{
+      String authToken = await getToken();
+      DioService.setAuthToken(authToken);
+
+      final res = await _dio.delete(
+        '/user/logout',
+      );
+
+      clearLocalStorage();
+
+      LogoutResponseModel logoutResponse = LogoutResponseModel.fromJson(jsonDecode(res.toString()));
+      return logoutResponse;
+
+    } catch (e) {
+      if (e is DioException) {
+        return LogoutResponseModel.fromJson(jsonDecode(e.response.toString()));;
+      }
+
+      rethrow;
+    }
+  }
+
   Future<UserModel> getUserData() async {
     try{
 

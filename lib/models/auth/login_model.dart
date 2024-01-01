@@ -25,3 +25,15 @@ class LoginResponseModel {
     );
   }
 }
+
+class LogoutResponseModel {
+  final String? message;
+
+  LogoutResponseModel({this.message});
+
+  factory LogoutResponseModel.fromJson(Map<String, dynamic> json) {
+    return LogoutResponseModel(
+      message: json['message'] ?? '',
+    );
+  }
+}

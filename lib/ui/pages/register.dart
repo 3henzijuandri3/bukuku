@@ -51,7 +51,6 @@ class _RegisterPageState extends State<RegisterPage> {
           context,
           durationBeforeClose: const Duration(seconds: 1),
           actionAfterClose: (){
-            registerStateController.clearState();
             Get.offAllNamed('/login');
           }
       );

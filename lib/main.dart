@@ -1,5 +1,8 @@
 import 'package:bukuku/shared/theme.dart';
 import 'package:bukuku/ui/pages/add_book.dart';
+import 'package:bukuku/ui/pages/all_book.dart';
+import 'package:bukuku/ui/pages/book_detail.dart';
+import 'package:bukuku/ui/pages/edit_book.dart';
 import 'package:bukuku/ui/pages/home.dart';
 import 'package:bukuku/ui/pages/login.dart';
 import 'package:bukuku/ui/pages/onboarding.dart';
@@ -47,6 +50,9 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/register', page: () => const RegisterPage()),
         GetPage(name: '/home', page: () => const HomePage()),
         GetPage(name: '/addBook', page: () => const AddBookPage()),
+        GetPage(name: '/allBook', page: () => const AllBookPage()),
+        GetPage(name: '/detail', page: () => BookDetailPage(bookId: Get.arguments)),
+        GetPage(name: '/edit', page: () => EditBookPage(bookId: Get.arguments)),
       ],
     );
   }

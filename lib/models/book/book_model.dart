@@ -47,19 +47,19 @@ class BookModel {
   String? updatedAt;
 
   BookModel({
-    required this.id,
-    required this.userId,
-    required this.isbn,
-    required this.title,
-    required this.subtitle,
-    required this.author,
-    required this.published,
-    required this.publisher,
-    required this.pages,
-    required this.description,
-    required this.website,
-    required this.createdAt,
-    required this.updatedAt,
+    this.id,
+    this.userId,
+    this.isbn,
+    this.title,
+    this.subtitle,
+    this.author,
+    this.published,
+    this.publisher,
+    this.pages,
+    this.description,
+    this.website,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory BookModel.fromJson(Map<String, dynamic> json) {
